@@ -141,7 +141,7 @@ async function connectToWA() {
     });
 
 
-const responsee = await axios.get('https://mv-visper-full-db.pages.dev/Main/main_var.json');
+const responsee = await axios.get('https://raw.githubusercontent.com/tharushadineshan792-coder/Connecting-/refs/heads/main/lib/system.json');
 const connectnumber = responsee.data
 	
 // Default owner JID
