@@ -6,17 +6,17 @@ function convertToBool(text, fault = 'true') {
 
 //gg
 module.exports = {
-SESSION_ID:'', // methanata ube id eka daganim
+SESSION_ID:'ScMHAIRC#58aXtxLaPPZs7bHeaI1JZoahlKUZVlvShIX5ieZqgOg', // methanata ube id eka daganim
 
 ANTI_DELETE: process.env.ANTI_DELETE === undefined ? 'true' : process.env.ANTI_DELETE, 
 MV_BLOCK: process.env. MV_BLOCK === undefined ? 'true' : process.env. MV_BLOCK,    
 ANTI_LINK: process.env.ANTI_LINK === undefined ? 'true' : process.env.ANTI_LINK, 
 SEEDR_MAIL: '',
-SEEDR_PASSWORD: '',
+SEEDR_PASSWORD: 'Tharu-MD',
 SUDO: '',//
 DB_NAME: 'thaaruuu',
 LANG: 'SI',
-OWNER_NUMBER: '94724884317'
+OWNER_NUMBER: '94711726564'
 
 };
 //GITHUB_AUTH_TdOKEN: 'ouvnI0xSDsmfWA1filVxx.SZ0vJGYkjlC5VX54U0e10',
