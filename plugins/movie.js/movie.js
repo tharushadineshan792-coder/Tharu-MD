@@ -3,48 +3,45 @@ const axios = require('axios');
 
 cmd({
     pattern: "movie",
-    alias: ["film", "mvid"],
+    alias: ["cinesubz", "mvid"],
     use: '.movie <movie name>',
     react: "🎬",
-    desc: "Search and download movies as documents",
+    desc: "Download movies from CineSubz as documents",
     category: "download",
     filename: __filename
 },
 async (conn, m, mek, { from, q, reply, config }) => {
     try {
-        if (!q) return await reply("❌ කරුණාකර චිත්‍රපටයේ නම ඇතුළත් කරන්න! \n\nඋදා: .movie Avatar");
+        if (!q) return await reply("❌ කරුණාකර චිත්‍රපටයේ නම ඇතුළත් කරන්න! (උදා: .movie Avatar)");
 
-        await reply(`⏳ *${q}* සොයමින් පවතී. කරුණාකර රැඳී සිටින්න...`);
+        await reply(`⏳ *${q}* CineSubz හරහා සොයමින් පවතී...`);
 
-        // ⚠️ සටහන: මෙහි පහතින් ඇති API URL එක උදාහරණයක් පමණි. 
-        // ඔබේ බොට් එකට ගැලපෙන වැඩ කරන Movie API එකක් මෙතැනට ඇතුළත් කරන්න.
-        const apiURL = `https://api.dark-yasiya.site/download/movie?search=${encodeURIComponent(q)}`; 
+        // GiftedTech API එක භාවිතා කිරීම
+        const apiURL = `https://api.giftedtech.my.id/api/download/cinesubz?search=${encodeURIComponent(q)}&apikey=gifted`;
         
         const res = await axios.get(apiURL);
         const data = res.data;
 
-        // API එකෙන් දත්ත ලැබෙනවාදැයි පරීක්ෂා කිරීම
-        if (!data || !data.result || !data.result.dl_link) {
-            return await reply("❌ මෙම චිත්‍රපටය සොයා ගැනීමට නොහැකි විය. කරුණාකර නම නිවැරදිදැයි පරීක්ෂා කරන්න.");
+        // API එකෙන් ලැබෙන දත්ත පරීක්ෂා කිරීම (Gifted API එකේ සාමාන්‍යයෙන් result ඇතුලේ තමයි දත්ත එන්නේ)
+        if (!data || !data.result || !data.result.download_url) {
+            return await reply("❌ මෙම චිත්‍රපටය සොයා ගැනීමට නොහැකි විය. වෙනත් නමකින් උත්සාහ කරන්න.");
         }
 
-        const downloadUrl = data.result.dl_link;
+        const downloadUrl = data.result.download_url;
         const movieTitle = data.result.title || q;
-        const fileSize = data.result.size || "Unknown";
 
-        await reply(`✅ *සොයාගත්තා:* ${movieTitle}\n📦 *ප්‍රමාණය:* ${fileSize}\n\nදැන් Document එකක් ලෙස එවමින් පවතී. මඳ වෙලාවක් රැඳී සිටින්න...`);
+        await reply(`✅ *සොයාගත්තා Shan:* ${movieTitle}\n\nදැන් Document එකක් ලෙස එවමින් පවතී. මඳ වෙලාවක් රැඳී සිටින්න...`);
 
-        // Document එකක් ලෙස WhatsApp එකට යැවීම
+        // ඩොකියුමන්ට් එකක් ලෙස යැවීම
         return await conn.sendMessage(from, { 
             document: { url: downloadUrl }, 
             mimetype: 'video/mp4', 
             fileName: `${movieTitle}.mp4`,
-            caption: `🎥 *${movieTitle}*\n⚖️ *Size:* ${fileSize}\n\n*SHAN-MD Movie Downloader*`
+            caption: `🎥 *Movie:* ${movieTitle}\n\n*SHAN-MD Movie Downloader*`
         }, { quoted: mek });
 
     } catch (e) {
         console.log(e);
-        await reply("⚠️ දෝෂයක් සිදු විය. API සර්වර් එකේ ගැටලුවක් විය හැක.");
+        await reply("⚠️ API එකේ හෝ සම්බන්ධතාවයේ දෝෂයක් සිදු විය.");
     }
 });
-  
