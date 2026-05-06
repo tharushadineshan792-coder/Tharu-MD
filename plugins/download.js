@@ -2432,3 +2432,36 @@ await conn.sendMessage(from, {
 }, { quoted: mek });
 
 
+async (conn, m, mek, { from, q, reply }) => {
+    try {
+        if (!q) return reply("❌ කරුණාකර චිත්‍රපටයේ නම ඇතුළත් කරන්න.");
+
+        // --- මෙන්න මෙතැනටයි API එක දාන්න ඕනේ ---
+        
+        // 1. API එකට Request එකක් යැවීම (Axios භාවිතයෙන්)
+        const response = await axios.get(`https://ඔබේ_API_ලින්ක්_එක?search=${encodeURIComponent(q)}`);
+        
+        // 2. API එකෙන් ලැබෙන දත්ත වලින් Download Link එක සහ නම වෙන් කර ගැනීම
+        // (මෙහි 'data.result' යනු උදාහරණයක් පමණි, ඔබේ API එකේ දත්ත ලැබෙන විදිහ අනුව මෙය වෙනස් වේ)
+        const downloadUrl = response.data.download_link; 
+        const movieTitle = response.data.title || q;
+
+        if (!downloadUrl) return reply("❌ මෙම චිත්‍රපටය සොයා ගැනීමට නොහැකි විය.");
+
+        // ------------------------------------------
+
+        await reply(`⏳ *${movieTitle}* සොයාගත්තා. දැන් Document එකක් ලෙස එවමින් පවතී...`);
+
+        // 3. ලබාගත් ලින්ක් එක භාවිතයෙන් WhatsApp එකට යැවීම
+        return await conn.sendMessage(from, { 
+            document: { url: downloadUrl }, 
+            mimetype: 'video/mp4', 
+            fileName: `${movieTitle}.mp4`,
+            caption: `🎥 *${movieTitle}* \n\n${config.FOOTER}`
+        }, { quoted: mek });
+
+    } catch (e) {
+        console.log(e);
+        reply("❌ දෝෂයක් සිදු විය. API එක වැඩ කරන්නේ නැති වෙන්න පුළුවන්.");
+    }
+	}
