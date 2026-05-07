@@ -7,9 +7,13 @@ async function gemini(conn, mek, m, { from, q, reply }) {
         // API එකට Request එක යවනවා
         const response = await axios.get(`https://api-dark-shan-yt.koyeb.app/ai/gemini?text=${encodeURIComponent(q)}`);
         
-        // API එකෙන් ලැබෙන උත්තරය ගෙන Reply කරනවා
+        // API එකෙන් ලැබෙන උත්තරය ලබා ගැනීම
         const result = response.data.result || response.data.data || "පිළිතුරක් ලබා ගැනීමට නොහැකි විය.";
-        await reply(result);
+        
+        // ඔයා අන්තිමට ඉල්ලපු විදිහට "Assistant" කියලා වෙනස් කළා
+        const finalMessage = `Hey I am Shan Gemini AI assistant 👻🧠\n\n${result}`;
+        
+        await reply(finalMessage);
 
     } catch (e) {
         console.log(e);
@@ -17,7 +21,6 @@ async function gemini(conn, mek, m, { from, q, reply }) {
     }
 }
 
-// මේක බොට්ගේ command එක විදිහට register කරනවා
 module.exports = {
     name: "gemini",
     alias: ["ai", "bot"],
