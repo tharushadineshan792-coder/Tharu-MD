@@ -1,19 +1,29 @@
 const axios = require('axios');
 
-// Command එක ඇතුළේ ලියන්න ඕන කොටස
-async (chat, text) => {
-    if (!text) return chat.reply("කරුණාකර ප්‍රශ්නයක් ඇතුළත් කරන්න.");
-
+async function gemini(conn, mek, m, { from, q, reply }) {
     try {
+        if (!q) return reply("කරුණාකර ප්‍රශ්නයක් ඇතුළත් කරන්න. (උදා: .gemini hello)");
+
         // API එකට Request එක යවනවා
-        const response = await axios.get(`https://api-dark-shan-yt.koyeb.app/ai/gemini?text=${encodeURIComponent(text)}`);
+        const response = await axios.get(`https://api-dark-shan-yt.koyeb.app/ai/gemini?text=${encodeURIComponent(q)}`);
         
-        // API එකෙන් ලැබෙන උත්තරය (මෙම response එක API එකේ structure එක අනුව වෙනස් විය හැක)
-        const aiResponse = response.data.result; 
-        
-        await chat.reply(aiResponse);
+        // API එකෙන් ලැබෙන උත්තරය ගෙන Reply කරනවා
+        const result = response.data.result || response.data.data || "පිළිතුරක් ලබා ගැනීමට නොහැකි විය.";
+        await reply(result);
+
     } catch (e) {
         console.log(e);
-        await chat.reply("සමාවන්න, AI එක සම්බන්ධ කරගැනීමේ දෝෂයක් තියෙනවා.");
+        await reply("සමාවන්න, API එකේ දෝෂයක් තියෙනවා.");
     }
-          }
+}
+
+// මේක බොට්ගේ command එක විදිහට register කරනවා
+module.exports = {
+    name: "gemini",
+    alias: ["ai", "bot"],
+    category: "ai",
+    desc: "Gemini AI සමඟ චැට් කරන්න",
+    use: ".gemini [ප්‍රශ්නය]",
+    filename: __filename,
+    execute: gemini
+};
