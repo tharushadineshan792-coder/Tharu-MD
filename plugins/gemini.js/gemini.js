@@ -12,23 +12,26 @@ cmd({
 },
 async (conn, mek, m, { from, q, reply }) => {
     try {
-        // ප්‍රශ්නයක් ලබා දී නැතිනම් මෙම පණිවිඩය පෙන්වයි
         if (!q) return await reply("කරුණාකර ප්‍රශ්නයක් ලබා දෙන්න. (උදා: .gemini සූර්යයා යනු කුමක්ද?)");
 
         await reply("Gemini AI සිතමින් පවතියි... 🤔");
 
-        // API එකට Request එක යවනවා
         const apiURL = `https://api-dark-shan-yt.koyeb.app/ai/gemini?text=${encodeURIComponent(q)}`;
+        
+        // API Request එක
         const res = await axios.get(apiURL);
         
-        // API එකෙන් ලැබෙන දත්ත පරීක්ෂා කිරීම
-        const result = res.data.result || res.data.data;
+        // පරීක්ෂා කිරීම සඳහා Console එකට දත්ත යවමු (Koyeb Logs බලන්න)
+        console.log("API Response Status:", res.status);
+        console.log("API Data:", res.data);
+
+        // දත්ත තිබේදැයි බලමු
+        let result = res.data.result || res.data.data;
 
         if (!result) {
-            return await reply("සමාවන්න, පිළිතුරක් ලබා ගැනීමට නොහැකි විය. පසුව උත්සාහ කරන්න.");
+            return await reply("සමාවන්න, API එකෙන් පිළිතුරක් ලැබුණේ නැහැ. පසුව උත්සාහ කරන්න.");
         }
 
-        // ලස්සනට Layout එක සකස් කිරීම
         let responseMsg = `✨ *GEMINI AI ASSISTANT* ✨\n\n` +
                           `${result}\n\n` +
                           `> *Hey I am Shan Gemini AI assistant 👻🧠*`;
@@ -36,8 +39,9 @@ async (conn, mek, m, { from, q, reply }) => {
         await reply(responseMsg);
 
     } catch (e) {
-        console.log("Error Details: ", e);
-        await reply("⚠️ තාක්ෂණික දෝෂයක් සිදු විය. API සර්වර් එකේ ගැටළුවක් විය හැක.");
+        // Error එක හරියටම මොකක්ද කියලා Reply එකේම පෙන්වමු
+        console.log("Detailed Error:", e);
+        await reply(`⚠️ තාක්ෂණික දෝෂයක්: ${e.message}`);
     }
 });
-          
+        
