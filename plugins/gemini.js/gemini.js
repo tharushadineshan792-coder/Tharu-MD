@@ -1,32 +1,35 @@
 const axios = require('axios');
 
-async function gemini(conn, mek, m, { from, q, reply }) {
+async function geminiAI(conn, mek, m, { from, q, reply }) {
     try {
         if (!q) return reply("කරුණාකර ප්‍රශ්නයක් ඇතුළත් කරන්න. (උදා: .gemini hello)");
 
         // API එකට Request එක යවනවා
         const response = await axios.get(`https://api-dark-shan-yt.koyeb.app/ai/gemini?text=${encodeURIComponent(q)}`);
         
-        // API එකෙන් ලැබෙන උත්තරය ලබා ගැනීම
-        const result = response.data.result || response.data.data || "පිළිතුරක් ලබා ගැනීමට නොහැකි විය.";
-        
-        // ඔයා අන්තිමට ඉල්ලපු විදිහට "Assistant" කියලා වෙනස් කළා
+        // API එකෙන් ලැබෙන දත්ත පරීක්ෂා කිරීම
+        const result = response.data.result || response.data.data;
+
+        if (!result) {
+            return reply("සමාවන්න, AI එකෙන් පිළිතුරක් ලැබුණේ නැහැ. API සර්වර් එකේ ප්‍රශ්නයක් විය හැක.");
+        }
+
         const finalMessage = `Hey I am Shan Gemini AI assistant 👻🧠\n\n${result}`;
-        
         await reply(finalMessage);
 
     } catch (e) {
         console.log(e);
-        await reply("සමාවන්න, API එකේ දෝෂයක් තියෙනවා.");
+        // මොකක් හරි අවුලක් නම් ඒක මෙතනින් දැනගන්න පුළුවන්
+        await reply("දෝෂයක් සිදු වුණා: " + e.message);
     }
 }
 
 module.exports = {
     name: "gemini",
-    alias: ["ai", "bot"],
+    alias: ["ai", "shan-ai"],
     category: "ai",
     desc: "Gemini AI සමඟ චැට් කරන්න",
-    use: ".gemini [ප්‍රශ්නය]",
+    use: ".gemini [text]",
     filename: __filename,
-    execute: gemini
+    execute: geminiAI
 };
