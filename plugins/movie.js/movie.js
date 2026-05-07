@@ -17,7 +17,7 @@ async (conn, m, mek, { from, q, reply, config }) => {
         await reply(`⏳ *${q}* සොයමින් පවතී. කරුණාකර රැඳී සිටින්න...`);
 
         // වඩාත් ස්ථාවර API එකක්
-        const apiURL = `https://api.p-asitha.online/download/movie?q=${encodeURIComponent(q)}`; 
+        const apiURL = `https://api-dark-shan-yt.koyeb.app/movie/sinhalasub-download?q=${encodeURIComponent(q)}`; 
         
         const res = await axios.get(apiURL);
         const data = res.data;
