@@ -1,13 +1,21 @@
-FROM node:20
+FROM node:lts-buster
 
+RUN apt-get update && \
+  apt-get install -y \
+  ffmpeg \
+  imagemagick \
+  webp && \
+  apt-get upgrade -y && \
+  rm -rf /var/lib/apt/lists/*
+  
 WORKDIR /usr/src/app
-COPY package.json ./
 
-# Add "type": "module" automatically (if not present in your package.json)
-RUN npm pkg set type=module
+COPY package.json .
 
 RUN npm install && npm install -g qrcode-terminal pm2
+
 COPY . .
 
 EXPOSE 5000
+
 CMD ["npm", "start"]
