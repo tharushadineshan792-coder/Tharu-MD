@@ -12,7 +12,7 @@ cmd({
     try {
         let menuMsg = `╭━━━〔 🤍 SHAN-MD 🤍 〕━━━⬣
 
-👋 Welcome to SHAN-MD User Bot 💚
+🤭 Welcome to SHAN-MD User Bot👻💗
 
 ╭━━━〔 📥 DOWNLOAD COMMANDS 〕━━⬣
 ┃ 🎵 ${prefix}mp3
