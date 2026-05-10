@@ -4,7 +4,7 @@ const { runtime } = require('../lib/functions')
 
 cmd({
     pattern: "menu",
-    react: "🤍",
+    react: "📜",
     desc: "Custom SHAN-MD Menu",
     category: "main",
     filename: __filename
