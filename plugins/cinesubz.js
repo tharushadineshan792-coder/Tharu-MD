@@ -74,7 +74,15 @@ async (conn, m, mek, { from, q, reply, config }) => {
         caption += `📦 *Size* ➜ ${movie.size || 'Unknown'}\n\n`;
         caption += `> *SHAN-MD Cinesubz Downloader* 🚀`;
 
-        await reply(caption);
+        // පින්තූරය ඇත්නම් එය සමඟ විස්තර යැවීම
+        if (movie.image || movie.thumbnail) {
+            await conn.sendMessage(from, { 
+                image: { url: movie.image || movie.thumbnail }, 
+                caption: caption 
+            }, { quoted: mek });
+        } else {
+            await reply(caption);
+        }
 
         // Document එකක් ලෙස වීඩියෝව යැවීම
         return await conn.sendMessage(from, {
@@ -89,5 +97,3 @@ async (conn, m, mek, { from, q, reply, config }) => {
         await reply("⚠️ දත්ත ලබා ගැනීමේදී ගැටලුවක් මතු විය.");
     }
 });
-       
-
