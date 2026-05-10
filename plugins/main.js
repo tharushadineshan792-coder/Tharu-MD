@@ -464,7 +464,7 @@ async (conn, mek, m, context) => {
 
 
 cmd({
-  pattern: "menu",
+  pattern: "oldmenu",
   react: "📁",
   alias: ["panel", "list", "commands"],
   desc: "Get bot's command list.",
