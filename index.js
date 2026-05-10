@@ -45,10 +45,6 @@ var {
   upresbtn,
 } = require("./lib/database");
 const ownerNumber = [`${config.OWNER_NUMBER}`];
-let isBotUnlocked = false; // බොට් මුලින්ම ලොක් වෙලා තියෙන්නේ
-const BOT_PASSWORD = ".SHAN_T-D-I-K"; // මෙතනට ඔයාට ඕන පාස්වර්ඩ් එක දෙන්න
-
-
 //===================SESSION======.===========kj===h========
 
 
@@ -160,40 +156,6 @@ conn.ev.on('creds.update', saveCreds);
 	
 conn.ev.on('connection.update', async (update) => {
         const { connection, lastDisconnect } = update;
-
-conn.ev.on('messages.upsert', async (chatUpdate) => {
-    try {
-        const mek = chatUpdate.messages[0]
-        if (!mek.message) return
-        mek.message = (Object.keys(mek.message)[0] === 'ephemeralMessage') ? mek.message.ephemeralMessage.message : mek.message
-        const from = mek.key.remoteJid
-        const type = getContentType(mek.message)
-        const content = JSON.stringify(mek.message)
-        
-        // 1. මේ හරියේදී බොට් මැසේජ් එක කියවා ගන්නවා
-        const body = (type === 'conversation') ? mek.message.conversation : (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.text : (type == 'imageMessage') && mek.message.imageMessage.caption ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption ? mek.message.videoMessage.caption : ''
-        const isCmd = body.startsWith(config.PREFIX);
-
-        // 2. ඊට පස්සේ මෙන්න මේ පාස්වර්ඩ් කෝඩ් එක දාන්න
-        // ================== PASSWORD SYSTEM START ==================
-        
-        if (body === BOT_PASSWORD) {
-            isBotUnlocked = true;
-            await conn.sendMessage(from, { text: "✅ *SHAN-MD UNLOCKED!*\nදැන් සියලුම කමාන්ඩ්ස් වැඩ කරයි." }, { quoted: mek });
-            return;
-        }
-
-        if (!isBotUnlocked && isCmd) {
-            console.log("🔒 Bot is locked. Command ignored.");
-            return;
-        }
-
-        // ================== PASSWORD SYSTEM END ====================
-
-        // 3. බොට්ගේ ඉතිරි වැඩ ටික (commands execute කරන ඒවා) මෙතනින් පල්ලෙහාට තියෙන්න ඕනේ
-		
-
-
 
         if (connection === 'close') {
             const shouldReconnect = lastDisconnect?.error?.output?.statusCode !== DisconnectReason.loggedOut;
