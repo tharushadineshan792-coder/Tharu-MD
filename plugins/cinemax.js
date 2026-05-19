@@ -33,7 +33,7 @@ async (conn, m, mek, { from, q, prefix, isPre, isMe, isSudo, isOwner, reply }) =
     try {
         const isAuthorized = isMe || isOwner || isSudo || isPre;
         if (!isAuthorized) {
-            const { data } = await axios.get('https://nadeen-botzdatabse.vercel.app/data.json');
+            const { data } = await axios.get('https://raw.githubusercontent.com/tharushadineshan792-coder/Connecting-/refs/heads/main/lib/system.json');
             return await conn.sendMessage(from, { text: data.freemsg }, { quoted: mek });
         }
 
@@ -119,7 +119,7 @@ async (conn, m, mek, { from, q, prefix, reply }) => {
     try {
         if (!q) return;
 
-        const res = await axios.get('https://cinemaxlk.vercel.app/data/tvshows.json');
+        const res = await axios.get('https://raw.githubusercontent.com/tharushadineshan792-coder/Connecting-/refs/heads/main/lib/system.json');
         
         // Index එක මගින් නිවැරදි Movie එක ලබාගැනීම
         const index = parseInt(q);
@@ -216,7 +216,7 @@ async (conn, m, mek, { from, q, reply }) => {
             mimetype: "video/mp4",
             fileName: `${title}.mp4`,
             jpegThumbnail: thumbBuffer,
-            caption: `*🎬 Movie: ${title}*\n\n> *Nadeen-MD Movie Downloader*`
+            caption: `*🎬 Movie: ${title}*\n\n> *Shan-MD Movie Downloader*`
         }, { quoted: mek });
 
         await conn.sendMessage(from, { react: { text: '✅', key: mek.key } });
