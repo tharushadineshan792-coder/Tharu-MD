@@ -79,7 +79,7 @@ const randomImages = [
 		
 	const sticker = new Sticker(rimg, {
     pack: 'MOVIExGO', // Pack name eka
-    author: 'Nadeen', // Creator name eka
+    author: 'Shan', // Creator name eka
     type: StickerTypes.FULL, // Sticker type eka
     categories: ['🤩', '🎉'], // Sticker categories
     id: '12345', // Sticker id
@@ -116,7 +116,7 @@ await conn.sendMessage(from, { sticker: stickerBuffer }, { quoted: mek });
 		
 	const stickerz = new Sticker(rimgz, {
     pack: 'MOVIExGO', // Pack name eka
-    author: 'Nadeen', // Creator name eka
+    author: 'Shan', // Creator name eka
     type: StickerTypes.FULL, // Sticker type eka
     categories: ['🤩', '🎉'], // Sticker categories
     id: '12345', // Sticker id
