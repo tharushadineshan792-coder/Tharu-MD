@@ -710,7 +710,7 @@ if (ytMatch) {
                 }
             } else {
                 // Movie match වුණේ නැතිනම් සාමාන්‍ය Gemini reply එක
-                await reply(`\`🤖 𝗦𝗛𝗔𝗝-𝐌𝐃 Λ𝐈\`\n\n${geminiResponse.text}`);
+                await reply(`\`🤖 𝗦𝗛𝗔𝗡-𝐌𝐃 Λ𝐈\`\n\n${geminiResponse.text}`);
             }
         } catch (e) {
             console.error(e);
