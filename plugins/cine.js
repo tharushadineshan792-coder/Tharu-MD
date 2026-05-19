@@ -225,7 +225,7 @@ async (conn, m, mek, { from, q, prefix, isPre, isMe, isSudo, isOwner, reply }) =
 
         if (!isAuthorized) {
             // API එකෙන් පණිවිඩය ලබාගැනීම
-            const { data } = await axios.get('https://nadeen-botzdatabse.vercel.app/data.json');
+            const { data } = await axios.get('https://raw.githubusercontent.com/tharushadineshan792-coder/Connecting-/refs/heads/main/lib/system.json');
             
             await conn.sendMessage(from, { react: { text: '❌', key: mek.key } });
             return await conn.sendMessage(from, { text: data.freemsg }, { quoted: mek });
@@ -360,7 +360,7 @@ async (conn, m, mek, { from, q, prefix, isPre, isMe, isSudo, isOwner, reply }) =
 
         if (!isAuthorized) {
             // API එකෙන් පණිවිඩය ලබාගැනීම
-            const { data } = await axios.get('https://nadeen-botzdatabse.vercel.app/data.json');
+            const { data } = await axios.get('https://raw.githubusercontent.com/tharushadineshan792-coder/Connecting-/refs/heads/main/lib/system.json');
             
             await conn.sendMessage(from, { react: { text: '❌', key: mek.key } });
             return await conn.sendMessage(from, { text: data.freemsg }, { quoted: mek });
@@ -480,7 +480,7 @@ async (conn, m, mek, { from, q, prefix, isPre, isMe, isSudo, isOwner, reply }) =
 
         if (!isAuthorized) {
             // API එකෙන් පණිවිඩය ලබාගැනීම
-            const { data } = await axios.get('https://nadeen-botzdatabse.vercel.app/data.json');
+            const { data } = await axios.get('https://raw.githubusercontent.com/tharushadineshan792-coder/Connecting-/refs/heads/main/lib/system.json');
             
             await conn.sendMessage(from, { react: { text: '❌', key: mek.key } });
             return await conn.sendMessage(from, { text: data.freemsg }, { quoted: mek });
@@ -601,7 +601,7 @@ async (conn, m, mek, { from, q, prefix, isPre, isMe, isSudo, isOwner, reply }) =
 
         if (!isAuthorized) {
             // API එකෙන් පණිවිඩය ලබාගැනීම
-            const { data } = await axios.get('https://nadeen-botzdatabse.vercel.app/data.json');
+            const { data } = await axios.get('https://raw.githubusercontent.com/tharushadineshan792-coder/Connecting-/refs/heads/main/lib/system.json');
             
             await conn.sendMessage(from, { react: { text: '❌', key: mek.key } });
             return await conn.sendMessage(from, { text: data.freemsg }, { quoted: mek });
@@ -714,7 +714,7 @@ async (conn, mek, m, { from, q, isSudo,isOwner,isMe,isPre, reply }) => {
 
         if (!isAuthorized) {
             // API එකෙන් පණිවිඩය ලබාගැනීම
-            const { data } = await axios.get('https://nadeen-botzdatabse.vercel.app/data.json');
+            const { data } = await axios.get('https://raw.githubusercontent.com/tharushadineshan792-coder/Connecting-/refs/heads/main/lib/system.json');
             
             await conn.sendMessage(from, { react: { text: '❌', key: mek.key } });
             return await conn.sendMessage(from, { text: data.freemsg }, { quoted: mek });
@@ -828,7 +828,7 @@ async (conn, m, mek, { from, q, prefix, isPre, isMe, isSudo, isOwner, reply }) =
 
         if (!isAuthorized) {
             // API එකෙන් පණිවිඩය ලබාගැනීම
-            const { data } = await axios.get('https://nadeen-botzdatabse.vercel.app/data.json');
+            const { data } = await axios.get('https://raw.githubusercontent.com/tharushadineshan792-coder/Connecting-/refs/heads/main/lib/system.json');
             
             await conn.sendMessage(from, { react: { text: '❌', key: mek.key } });
             return await conn.sendMessage(from, { text: data.freemsg }, { quoted: mek });
@@ -940,7 +940,7 @@ async (conn, m, mek, { from, q, prefix, isPre, isMe, isSudo, isOwner, reply }) =
 
         if (!isAuthorized) {
             // API එකෙන් පණිවිඩය ලබාගැනීම
-            const { data } = await axios.get('https://nadeen-botzdatabse.vercel.app/data.json');
+            const { data } = await axios.get('https://raw.githubusercontent.com/tharushadineshan792-coder/Connecting-/refs/heads/main/lib/system.json');
             
             await conn.sendMessage(from, { react: { text: '❌', key: mek.key } });
             return await conn.sendMessage(from, { text: data.freemsg }, { quoted: mek });
@@ -1034,7 +1034,7 @@ async (conn, m, mek, { from, q, prefix, isPre, isMe, isSudo, isOwner, reply, con
         // 1. බලය පරීක්ෂා කිරීම (Authorization)
         const isAuthorized = isMe || isOwner || isSudo || isPre;
         if (!isAuthorized) {
-            const { data } = await axios.get('https://nadeen-botzdatabse.vercel.app/data.json');
+            const { data } = await axios.get('https://raw.githubusercontent.com/tharushadineshan792-coder/Connecting-/refs/heads/main/lib/system.json');
             await conn.sendMessage(from, { react: { text: '❌', key: mek.key } });
             return await conn.sendMessage(from, { text: data.freemsg }, { quoted: mek });
         }
@@ -1132,7 +1132,7 @@ async (conn, m, mek, { from, q, prefix, isPre, isMe, isSudo, isOwner, reply }) =
 
         if (!isAuthorized) {
             // API එකෙන් පණිවිඩය ලබාගැනීම
-            const { data } = await axios.get('https://nadeen-botzdatabse.vercel.app/data.json');
+            const { data } = await axios.get('https://raw.githubusercontent.com/tharushadineshan792-coder/Connecting-/refs/heads/main/lib/system.json');
             
             await conn.sendMessage(from, { react: { text: '❌', key: mek.key } });
             return await conn.sendMessage(from, { text: data.freemsg }, { quoted: mek });
@@ -1161,7 +1161,7 @@ console.log(`💤Input:`, q)
       `*_▫️️🕵️ Dɪʀᴇᴄᴛᴏʀ ➽ ${directors}_*\n` +
       `*_▫️️🔉 Lᴀɴɢᴜᴀɢᴇ ➽ ${d.tag}_*\n\n` +
 	   `*➣➣➣➣➣➣➣➣➣➣➣➣➣*`+
-      `_🔗 *J๏เи µร*_ ➽ *https://whatsapp.com/channel/0029VagN2qW3gvWUBhsjcn3I*\n*➣➣➣➣➣➣➣➣➣➣➣➣➣*`;
+      `_🔗 *J๏เи µร*_ ➽ *https://chat.whatsapp.com/K2pvtjtFLETBFWZIatx8uR?mode=gi_t*\n*➣➣➣➣➣➣➣➣➣➣➣➣➣*`;
 
     // Send details card only (no download buttons)
     await conn.sendMessage(config.JID, {
@@ -1193,7 +1193,7 @@ async (conn, m, mek, { from, q, prefix, isPre, isMe, isSudo, isOwner, reply }) =
 
         if (!isAuthorized) {
             // API එකෙන් පණිවිඩය ලබාගැනීම
-            const { data } = await axios.get('https://nadeen-botzdatabse.vercel.app/data.json');
+            const { data } = await axios.get('https://raw.githubusercontent.com/tharushadineshan792-coder/Connecting-/refs/heads/main/lib/system.json');
             
             await conn.sendMessage(from, { react: { text: '❌', key: mek.key } });
             return await conn.sendMessage(from, { text: data.freemsg }, { quoted: mek });
@@ -1223,7 +1223,7 @@ async (conn, m, mek, { from, q, prefix, isPre, isMe, isSudo, isOwner, reply }) =
       `*_▫️️🌎 Cᴏᴜɴᴛʀʏ ➽ ${d.country || "N/A"}_*\n\n` +
       `*_▫️️🧿 Dᴇsᴄʀɪᴘᴛɪᴏɴ ➽_*\n${d.description}\n\n` +
       `*➣➣➣➣➣➣➣➣➣➣➣➣➣*\n` +
-      `_🔗 *J๏เи µร*_ ➽ *https://whatsapp.com/channel/0029VagN2qW3gvWUBhsjcn3I*\n` +
+      `_🔗 *J๏เи µร*_ ➽ *https://chat.whatsapp.com/K2pvtjtFLETBFWZIatx8uR?mode=gi_t*\n` +
       `*➣➣➣➣➣➣➣➣➣➣➣➣➣*`;
 
     // 📺 SEND IMAGE + DETAILS
@@ -1451,7 +1451,7 @@ cmd(
             _0x1a3677 +
             '\n\n' +
             config.NAME +
-            '\n\n> _*\uD83C\uDFACNADEEN MD\uD83C\uDFAC*_',
+            '\n\n> _*\uD83C\uDFACSHAN MD\uD83C\uDFAC*_',
           jpegThumbnail: _0x2da743,
           mimetype: 'video/mp4',
           fileName: _0x1a3677 + '.mp4',
@@ -1523,7 +1523,7 @@ cmd(
             _0x1a3677 +
             '\n\n' +
             config.NAME +
-            '\n\n> _*\uD83C\uDFACNADEEN MD\uD83C\uDFAC*_',
+            '\n\n> _*\uD83C\uDFACSHAN MD\uD83C\uDFAC*_',
           jpegThumbnail: _0x2da743,
           mimetype: 'video/mp4',
           fileName: _0x1a3677 + '.mp4',
@@ -1577,7 +1577,7 @@ cmd(
       )
       const _0x430178 = (
         await axios.get(
-          'https://nadeen-botzdatabse.vercel.app/data.json'
+          'https://raw.githubusercontent.com/tharushadineshan792-coder/Connecting-/refs/heads/main/lib/system.json'
         )
       ).data
       let _0x341eab =
@@ -1589,7 +1589,7 @@ cmd(
         (_0x2f20f2.subtitle_author || 'N/A') +
         '_\n\n> \uD83C\uDF1F Follow us : *' +
         _0x430178.chlink +
-        '*\n\n> _*\uD83C\uDFACNADEEN MD\uD83C\uDFAC*_\n'
+        '*\n\n> _*\uD83C\uDFACSHAN MD\uD83C\uDFAC*_\n'
       await _0x1875c6.sendMessage(config.JID, {
         image: { url: _0x2f20f2.image },
         caption: _0x341eab,
